@@ -1,18 +1,16 @@
-# Security Risk 1: Open SSH Port to the world
-resource "aws_security_group" "bad_sg" {
-  name        = "vulnerable-sg"
-  description = "Cybersecurity Risk Open Port"
+resource "aws_security_group" "bad_group" {
+  name        = "allow_all"
+  description = "Vulnerable security group setup"
 
   ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # Dangerous!
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
-# Security Risk 2: Public S3 Bucket
-resource "aws_s3_bucket" "bad_bucket" {
-  bucket = "my-very-secret-raw-data-bucket"
-  acl    = "public-read" # Dangerous!
+resource "aws_s3_bucket" "insecure_bucket" {
+  bucket = "my-very-vulnerable-data-bucket"
+  # Missing logging, encryption, or versioning block
 }
