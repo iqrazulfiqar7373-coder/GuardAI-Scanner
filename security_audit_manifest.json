@@ -1,0 +1,16 @@
+{
+    "target_file": "vulnerable.tf",
+    "metrics": {
+        "static_vulnerabilities_count": 2,
+        "ai_vulnerabilities_count": 0
+    },
+    "findings": {
+        "static_layer_output": [
+            "STATIC_ERR: Open firewall or security group allows unrestricted internet access (0.0.0.0/0).",
+            "STATIC_ERR: AWS S3 Bucket resource defined without explicit server-side encryption enabled."
+        ],
+        "ai_layer_output": [
+            "AI_ERROR: Anthropic API Key is missing in .env configuration."
+        ]
+    }
+}
